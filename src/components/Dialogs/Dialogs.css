@@ -1,0 +1,21 @@
+.dialogs {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+}
+.dialogs-users {
+    width: 30%;
+    border-right: 1px solid #131313;
+}
+.dialogs-users .user {
+    position: relative;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+.dialogs-users .user:before {
+    position: absolute;
+    content: "\2022";
+    left: -20px;
+}
