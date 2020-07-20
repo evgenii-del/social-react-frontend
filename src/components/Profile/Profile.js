@@ -5,15 +5,15 @@ import Banner from './Banner/Banner';
 import Avatar from './Avatar/Avatar';
 import About from "./About/About";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div className="profile">
-            <Banner />
+            <Banner/>
             <div className="profile-inner">
-                <Avatar />
-                <About />
+                <Avatar/>
+                <About/>
             </div>
-            <Posts />
+            <Posts posts={props.posts}/>
         </div>
     );
 }
