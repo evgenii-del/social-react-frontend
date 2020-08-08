@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 let state = {
     posts: [
         {id: 1, content: "First post", likeCount: 2},
@@ -18,6 +20,17 @@ let state = {
             {id: 4, message: 'By'},
         ]
     }
+}
+
+export let addPost = (post) => {
+    let newPost = {
+        id: 5,
+        content: post,
+        likeCount: 0
+    };
+
+    state.posts.push(newPost);
+    renderEntireTree(state);
 }
 
 export default state;
