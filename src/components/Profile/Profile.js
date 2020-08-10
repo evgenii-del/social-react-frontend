@@ -13,7 +13,7 @@ const Profile = (props) => {
                 <Avatar/>
                 <About/>
             </div>
-            <Posts posts={props.posts} addPost={props.addPost}/>
+            <Posts posts={props.state.posts} addPost={props.addPost} updatePostText={props.updatePostText} newPostText={props.state.newPostText}/>
         </div>
     );
 }
