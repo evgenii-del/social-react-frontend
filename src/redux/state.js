@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const ADD_MESSAGE = 'CREATE-MESSAGE';
+const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
+
 
 let store = {
     _state: {
@@ -9,7 +12,7 @@ let store = {
                 {id: 2, content: "Hi my first post", likeCount: 12},
                 {id: 3, content: "I learn React", likeCount: 5},
             ],
-            newPostText: 'Some text'
+            newPostText: ''
         },
         dialogsPage: {
             dialogs: [
@@ -23,7 +26,8 @@ let store = {
                 {id: 2, message: 'My name is John.'},
                 {id: 3, message: 'Can you help me?'},
                 {id: 4, message: 'By'},
-            ]
+            ],
+            newMessageText: ''
         }
     },
     _renderEntireTree() {
@@ -48,8 +52,16 @@ let store = {
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
             this._renderEntireTree(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === 'UPDATE-POST-TEXT') {
             this._state.profilePage.newPostText = action.content;
+            this._renderEntireTree(this._state);
+        } else if (action.type === 'CREATE-MESSAGE') {
+            let content = this._state.dialogsPage.newMessageText;
+            this._state.dialogsPage.newMessageText = '';
+            this._state.dialogsPage.messages.push({id: 5, message: content});
+            this._renderEntireTree(this._state);
+        } else if (action.type === 'UPDATE-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.content;
             this._renderEntireTree(this._state);
         }
     }
@@ -63,7 +75,20 @@ export const addPostActionCreator = () => {
 
 export const onPostChangeActionCreator = (content) => {
     return {
-        type: UPDATE_NEW_POST_TEXT,
+        type: UPDATE_POST_TEXT,
+        content: content
+    }
+}
+
+export const addMessageActionCreator = () => {
+    return {
+        type: ADD_MESSAGE
+    }
+}
+
+export const onMessageChangeActionCreator = (content) => {
+    return {
+        type: UPDATE_MESSAGE_TEXT,
         content: content
     }
 }
