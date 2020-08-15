@@ -1,8 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
-const ADD_MESSAGE = 'CREATE-MESSAGE';
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
-
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 let store = {
     _state: {
@@ -42,54 +39,10 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                content: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._renderEntireTree(this._state);
-        } else if (action.type === 'UPDATE-POST-TEXT') {
-            this._state.profilePage.newPostText = action.content;
-            this._renderEntireTree(this._state);
-        } else if (action.type === 'CREATE-MESSAGE') {
-            let content = this._state.dialogsPage.newMessageText;
-            this._state.dialogsPage.newMessageText = '';
-            this._state.dialogsPage.messages.push({id: 5, message: content});
-            this._renderEntireTree(this._state);
-        } else if (action.type === 'UPDATE-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText = action.content;
-            this._renderEntireTree(this._state);
-        }
-    }
-}
-
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
-
-export const onPostChangeActionCreator = (content) => {
-    return {
-        type: UPDATE_POST_TEXT,
-        content: content
-    }
-}
-
-export const addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE
-    }
-}
-
-export const onMessageChangeActionCreator = (content) => {
-    return {
-        type: UPDATE_MESSAGE_TEXT,
-        content: content
+        this._renderEntireTree(this._state);
     }
 }
 
