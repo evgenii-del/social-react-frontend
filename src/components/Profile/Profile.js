@@ -1,9 +1,9 @@
 import React from 'react';
 import './Profile.css';
-import Posts from './Posts/Posts';
 import Banner from './Banner/Banner';
 import Avatar from './Avatar/Avatar';
 import About from "./About/About";
+import PostsContainer from "./Posts/PostsContainer";
 
 const Profile = (props) => {
     return (
@@ -13,7 +13,7 @@ const Profile = (props) => {
                 <Avatar/>
                 <About/>
             </div>
-            <Posts posts={props.state.posts} dispatch={props.dispatch} newPostText={props.state.newPostText}/>
+            <PostsContainer store={props.store}/>
         </div>
     );
 }
