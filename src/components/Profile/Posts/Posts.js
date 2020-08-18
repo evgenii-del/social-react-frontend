@@ -3,7 +3,6 @@ import Post from './Post/Post';
 import './Posts.css';
 
 const Posts = (props) => {
-    debugger;
     let state = props.profilePage;
 
     let posts = state.posts.map(post => <Post content={post.content} likeCount={post.likeCount}/>);
