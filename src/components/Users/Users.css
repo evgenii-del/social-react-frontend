@@ -1,0 +1,30 @@
+.users {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.users-right {
+    margin-left: 30px;
+    color: #ffffff;
+}
+
+.users-img img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.users-btn a {
+    display: block;
+    background-color: darkblue;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.users-btn a:hover {
+    color: darkblue;
+    background-color: white;
+    transition: 1s;
+}
