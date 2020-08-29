@@ -5,8 +5,8 @@ const Users = (props) => {
     return (
         <div>
             {
-                props.users.map(user => <div className="users">
-                        <div className="users-left" key={user.id}>
+                props.users.map(user => <div className="users" key={user.id}>
+                        <div className="users-left">
                             <div className="users-img">
                                 <img src='https://images.pexels.com/photos/2480334/pexels-photo-2480334.jpeg'/>
                             </div>

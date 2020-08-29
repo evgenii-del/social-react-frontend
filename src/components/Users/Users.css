@@ -22,8 +22,9 @@
     cursor: pointer;
 }
 
-.users-btn input:hover {
-    color: darkblue;
-    background-color: white;
-    transition: 1s;
+.loader {
+    display: block;
+    margin: 0 auto;
+    width: 35px;
+    height: 35px;
 }

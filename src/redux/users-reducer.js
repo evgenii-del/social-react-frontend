@@ -1,9 +1,11 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const TOGGLE_IN_PROGRESS = 'TOGGLE_IN_PROGRESS';
 
 let initialState = {
-    users: []
+    users: [],
+    inProgress: true
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -38,6 +40,9 @@ const usersReducer = (state = initialState, action) => {
                 users: [...state.users, ...action.users]
             }
         }
+        case TOGGLE_IN_PROGRESS: {
+            return {...state, inProgress: action.inProgress}
+        }
         default:
             return state
     }
@@ -61,6 +66,13 @@ export const setUsersActionCreator = (users) => {
     return {
         type: SET_USERS,
         users
+    }
+}
+
+export const toggleProgressActionCreator = (inProgress) => {
+    return {
+        type: TOGGLE_IN_PROGRESS,
+        inProgress
     }
 }
 
