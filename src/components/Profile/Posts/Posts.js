@@ -14,7 +14,7 @@ const Posts = (props) => {
 
     const onPostChange = (event) => {
         let content = event.target.value;
-        props.postChange(content);
+        props.onPostChange(content);
     }
 
     return (

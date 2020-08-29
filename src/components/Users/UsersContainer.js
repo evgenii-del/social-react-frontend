@@ -1,20 +1,15 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {
-    followActionCreator,
-    setUsersActionCreator,
-    toggleProgressActionCreator,
-    unfollowActionCreator
-} from "../../redux/users-reducer";
 import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader";
+import {follow, setUsers, toggleProgress, unfollow} from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.toggleInProgress(true);
+        this.props.toggleProgress(true);
         axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
-            this.props.toggleInProgress(false);
+            this.props.toggleProgress(false);
             this.props.setUsers(response.data);
         })
     }
@@ -39,21 +34,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (id) => {
-            dispatch(followActionCreator(id));
-        },
-        unfollow: (id) => {
-            dispatch(unfollowActionCreator(id));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersActionCreator(users));
-        },
-        toggleInProgress: (inProgress) => {
-            dispatch(toggleProgressActionCreator(inProgress));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    toggleProgress
+})(UsersContainer);
