@@ -14,8 +14,7 @@
     object-fit: cover;
 }
 
-.users-btn a {
-    display: block;
+.users-btn input {
     background-color: darkblue;
     color: white;
     padding: 5px;
@@ -23,7 +22,7 @@
     cursor: pointer;
 }
 
-.users-btn a:hover {
+.users-btn input:hover {
     color: darkblue;
     background-color: white;
     transition: 1s;
